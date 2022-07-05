@@ -50,6 +50,7 @@ services:
       - cvat_data:/home/django/data
       - cvat_keys:/home/django/keys
       - cvat_logs:/home/django/logs
+      - /opt/storage/flex-annotation-repository:/home/django/share:ro
     networks:
       - cvat
 

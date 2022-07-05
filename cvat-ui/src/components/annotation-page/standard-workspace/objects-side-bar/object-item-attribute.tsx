@@ -1,4 +1,4 @@
-// Copyright (C) 2020 Intel Corporation
+// Copyright (C) 2022 Intel Corporation
 //
 // SPDX-License-Identifier: MIT
 
@@ -161,6 +161,8 @@ function ItemAttributeComponent(props: Props): JSX.Element {
         direction: null,
     });
 
+    const [localText, setLocalText] = useState<string>(attrValue);
+
     useEffect(() => {
         if (ref.current && ref.current.input) {
             ref.current.input.selectionStart = selection.start;
@@ -187,10 +189,10 @@ function ItemAttributeComponent(props: Props): JSX.Element {
                                 direction: ref.current.input.selectionDirection,
                             });
                         }
-
+                        setLocalText(event.target.value);
                         changeAttribute(attrID, event.target.value);
                     }}
-                    value={attrValue}
+                    value={localText}
                     className='cvat-object-item-text-attribute'
                 />
             </Col>
